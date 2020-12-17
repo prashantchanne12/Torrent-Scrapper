@@ -3,7 +3,7 @@ const cors = require('cors')({ origin: true });
 
 const puppeteer = require('puppeteer');
 
-const scrapeLinks = async (query) => {
+const scrapeYTS = async (query) => {
 
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
@@ -147,9 +147,9 @@ exports.scrapper = functions.https.onRequest(async (request, response) => {
 
     cors(request, response, async () => {
 
-        // const data = await scrapeLinks('deadpool');
+        const data = await scrapeYTS('deadpool');
         // const data = await scrape1337X('deadpool');
-        const data = await scrapThePirateBay('deadpool');
+        // const data = await scrapThePirateBay('deadpool');
 
         response.send(data);
 
